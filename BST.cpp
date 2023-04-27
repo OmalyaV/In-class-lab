@@ -70,11 +70,11 @@ struct node *deleteNode(struct node *root, int key) {
     return root;
   }
   else if (root->key > key){
-    deleteNode(root->left, key);
+   root->left= deleteNode(root->left, key);
     
   }
   else if(root->key< key){
-    deleteNode(root->right , key);
+    root->right = deleteNode(root->right , key);
     
   }
 
