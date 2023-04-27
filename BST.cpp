@@ -66,27 +66,27 @@ struct node *insertNode(struct node *root, int key) {
 
 // Deleting a node
 struct node *deleteNode(struct node *root, int key) {
-  if (root == nullptr){
+  if (root == NULL){
     return root;
   }
   else if (root->key > key){
     deleteNode(root->left, key);
-    return root;
+    
   }
   else if(root->key< key){
     deleteNode(root->right , key);
-    return root;
+    
   }
 
   else{
     struct node* temp = new node();
-    if((root->left ==nullptr) && (root->right == nullptr)){
-      temp = root;
-      root = nullptr;
+    if((root->left ==NULL) && (root->right == NULL)){
+      
+      root = NULL;
       
     }
 
-    else if((root->left != nullptr) && (root->right == nullptr) ){
+    else if((root->left != NULL) && (root->right == NULL) ){
       temp = root;
       root = root->left;
       
@@ -102,11 +102,12 @@ struct node *deleteNode(struct node *root, int key) {
       while(temp->left != nullptr){
         temp = temp->left;
       }
-      temp->key = key;
-      deleteNode(temp, key);
+      root->key = temp->key;
+      root->right=deleteNode(temp, key);
+      
     }
   }
- 
+ return root;
 }
 
 
