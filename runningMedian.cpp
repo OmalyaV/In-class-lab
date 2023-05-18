@@ -16,7 +16,7 @@ void print(vector<float> arr, int size){
 }
 
 
-void quick_sort(vector<float> arr, int first, int last){
+void quick_sort(vector <float> &arr, int first, int last){
     if ((last- first)>1){
         int pivot = arr[last-1];
         int i = first-1;
@@ -49,7 +49,7 @@ int main(){
     if (size >0){
         float *arr = new float[size];
         float number;
-    cout <<"Enter the elements in white spaces";
+    cout <<"Enter the elements in white spaces ";
     for  (int i=0; i<size; i++ ){
         cin >> number;
         arr[i] = number;
@@ -60,9 +60,11 @@ int main(){
         result.push_back(arr[j]);
         
         int size2 = result.size();
-        print(result, size2);
+        
         cout <<endl;
+        
         quick_sort(result, 0,size2 );
+        print(result, size2);
         if (result.size()%2 ==1){
             median = float(result[(size2-1)/2]);
             
