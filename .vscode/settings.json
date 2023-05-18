@@ -1,8 +1,17 @@
 {
     "files.associations": {
+<<<<<<< HEAD
         "new": "cpp",
         "iostream": "cpp",
         "chrono": "cpp",
         "type_traits": "cpp"
+=======
+        "array": "cpp",
+        "bitset": "cpp",
+        "initializer_list": "cpp",
+        "regex": "cpp",
+        "utility": "cpp",
+        "valarray": "cpp"
+>>>>>>> 7d9a9ba9f126e7b4d56f40f72b539dee3a5bf332
     }
 }
