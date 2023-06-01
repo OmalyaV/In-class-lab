@@ -13,19 +13,23 @@ void dijkstras_algorithm(int source, int graph[6][6]){
     vector<int> distance(6, INT_MAX);
     priority_queue<pair<int,int>, vector<pair<int,int>>,greater<>> priority_q;
     distance[source] = 0;
+    vector<bool> visited(6, false);
     priority_q.emplace(0,source);
+
     while (!priority_q.empty()){
         int city_u = priority_q.top().second;
+        visited[city_u] = true;
         priority_q.pop();
         int weight_v;
         for(int city_v=0;city_v<6;city_v++){
-            if(graph[city_u][city_v] !=0){
+            if(graph[city_u][city_v] !=0 && (!visited[city_v])){
                 weight_v= graph[city_u][city_v];
+                if(distance[city_u] != INT_MAX && distance[city_u]+weight_v<distance[city_v]){
+                    distance[city_v] = distance[city_u]+weight_v;
+                    priority_q.emplace(distance[city_v], city_v);
+                }
             }
-            if(distance[city_u] != INT_MAX && distance[city_u]+weight_v<distance[city_v]){
-                distance[city_v] = distance[city_u]+weight_v;
-                priority_q.emplace(distance[city_v], city_v);
-            }
+
 
         }
     }
@@ -40,6 +44,11 @@ void dijkstras_algorithm(int source, int graph[6][6]){
     cout<<endl;
 
 }
+
+//void dijkstrasAlgorithm(int source, int graph[6][6]){
+//    vector<int> distance(6, INT_MAX);
+//}
+
 int main() {
     int rows = 6;
     int columns = 6;
