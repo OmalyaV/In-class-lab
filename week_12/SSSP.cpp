@@ -11,9 +11,9 @@ using namespace std;
 
 void dijkstras_algorithm(int source, int graph[6][6]){
     vector<int> distance(6, INT_MAX);
-    priority_queue<pair<int,int>, vector<pair<int,int>>,greater<>> priority_q;
+    priority_queue<pair<int,int>, vector<pair<int,int>>,greater<>> priority_q; //this is to catch the next visiting city after the current
     distance[source] = 0;
-    vector<bool> visited(6, false);
+    vector<bool> visited(6, false); // to track if visited
     priority_q.emplace(0,source);
 
     while (!priority_q.empty()){
@@ -22,9 +22,9 @@ void dijkstras_algorithm(int source, int graph[6][6]){
         priority_q.pop();
         int weight_v;
         for(int city_v=0;city_v<6;city_v++){
-            if(graph[city_u][city_v] !=0 && (!visited[city_v])){
+            if(graph[city_u][city_v] !=0 && (!visited[city_v])){ // travelling to neighbours if they aren't visited
                 weight_v= graph[city_u][city_v];
-                if(distance[city_u] != INT_MAX && distance[city_u]+weight_v<distance[city_v]){
+                if(distance[city_u] != INT_MAX && distance[city_u]+weight_v<distance[city_v]) // condition to change the distance value of the visiting cities
                     distance[city_v] = distance[city_u]+weight_v;
                     priority_q.emplace(distance[city_v], city_v);
                 }
@@ -32,7 +32,7 @@ void dijkstras_algorithm(int source, int graph[6][6]){
 
 
         }
-    }
+
     //printing the shortest distances
     cout << "from city "<< source <<" shortest distances to each city"<<endl;
     for(int k=0; k< 6; k++){
@@ -45,9 +45,7 @@ void dijkstras_algorithm(int source, int graph[6][6]){
 
 }
 
-//void dijkstrasAlgorithm(int source, int graph[6][6]){
-//    vector<int> distance(6, INT_MAX);
-//}
+
 
 int main() {
     int rows = 6;
