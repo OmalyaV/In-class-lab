@@ -23,8 +23,9 @@ int find_min(vector<int> key, vector<bool> visited, int V){
 
 }
 void printMST(vector<int> parent, vector<vector<int>> graph,int V){
+    cout <<"parent"<<"   "<<"node"<< " weight"<<endl;
     for (int i = 1; i < V; i++)
-        cout << parent[i] << " - " << i << " \t"
+        cout << parent[i] << "      - " << i << " \t"
              << graph[i][parent[i]] << endl;
 }
 
